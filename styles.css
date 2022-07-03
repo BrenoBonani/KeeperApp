@@ -12,6 +12,7 @@ body {
   background-image: url("https://www.transparenttextures.com/patterns/escheresque.png");
   overflow-x: hidden;
   min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
