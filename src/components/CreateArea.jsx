@@ -142,11 +142,11 @@ Feito isso, eu preciso passar para uma array vazia. Crio outra const [notes, set
 e só quando o usuário adicionar, que vai popular ela. Por isso, que eu volto nela e coloco setNotes(prevNotes), crio a arrow function e retorno prevNotes usando 
 spread operator, para que eu pegar todas as notas anteriores e adicionar na nota final. Por isso, eu adiciono newNote no final.
 
-Por fim, eu pego o array e passo cada item para renderizar na tela. Até agora, lá no app.jsx eu não estava usando minha notes recem criada. Então, ao inves de ter 
-apenas minha Note.jsx que tem uma array lá retornando, eu vou usar o map para mapear através dela e renderizar um componente de nota diferente para cada item lá dentro.
+Por fim, eu pego o array e passo cada item para renderizar na tela. Até agora, lá no app.jsx eu não estava usando minha notes recem criada. Agora, eu preciso tirar o conteudo
+dentro da array e renderizar cada componente separado. Eu vou usar o map para mapear através dela e renderizar um componente de nota diferente para cada item lá dentro.
 
 Meu map vai ter uma função, que vai ser uma arrow function, com um noteItem dentro. O map function vai fazer um loop dentro do array lá no Note.jsx e vai pegar cada item
-dentro e executar essa função. Em seguida, vou retornar o Note component com algumas properties (props repassadas), que ai entra os noteItem.title e .content. E pronto. Implementei adicionar a
+dentro (noteItem) e executar essa função. Em seguida, vou retornar o Note component com algumas properties (props repassadas), que ai entra os noteItem.title e .content. E pronto. Implementei adicionar a
 funcionalidade de adicionar as notas.
 
 Agora, eu preciso só adicionar de deletar. Agora, dentro do meu arquivo Note.jsx, eu tenho um botão de delete e eu preciso que ele faça alguma ação, assim como o botão de adicionar.
@@ -166,8 +166,8 @@ dentro do meu return lá no notes.map e passo {deleteNote} como a função que v
 
 Para remover as notas do meu array, eu uso setNotes(prevNotes), crio uma arrow function e acesso as previous notes, que vai passar usando um filter() (filter function), que aceita até 3 argumentos. Dentro
 do filter() eu passo outra arrow function. Dentro dela, eu vou passar o primeiro valor que estamos passando no momento, que é noteItem e o segundo é o index desse item. Dessa forma, pelo index eu vou conseguir
-destinguir quais notas criadas podem ser apagadas. Então eu retorno, se o !index == (não for igual ao id da nota que precisa ser deletada), portanto ele deve deletar todas um array que contem todas as notas an
-teriores, exceto aquelas correspondem ao id que vão ser excluidas.
+destinguir quais notas criadas podem ser apagadas. Então dentro desta função, eu vou retornar todas as notas onde o index não é igual ao id da nota que eu quero apagar. Desta forma, eu vou continuar com um array
+cheio das notas anteriores, menos aquelas ou aquela onde o index é igual ao id.
 
 Por isso que eu passei o key e o id dentro <Note /> lá no app.jsx como index. Quando a nova nota for renderizada, vai passar pelo índice no noteItem lá no array que podemos puxar lá do Note components (note.jsx).
 Para que quando chamarmos props.onDelete, ele vai passar props.id e enviar de volta quando acionarmos o onDelete.
